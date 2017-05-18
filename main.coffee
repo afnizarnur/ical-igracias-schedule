@@ -13,7 +13,7 @@ request {
   json: true
 }, (error, response, body) ->
   if !error and response.statusCode == 200
-    console.log body[0][0][0].courseid;
+    console.log body[0][0][0].courseid
   return
 
 
