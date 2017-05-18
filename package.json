@@ -9,6 +9,7 @@
   "author": "Afnizar Nur Ghifari",
   "license": "ISC",
   "dependencies": {
-    "ical-generator": "^0.2.9"
+    "ical-generator": "^0.2.9",
+    "request": "^2.81.0"
   }
 }
