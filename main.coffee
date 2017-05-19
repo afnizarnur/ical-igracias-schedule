@@ -19,8 +19,12 @@ request {
   if !error and response.statusCode == 200
     for value in body[0][0]
       today = new Date()
-      # Set to next week
+      # Set to monday
       today.setDate today.getDate() + (1 + 7 - today.getDay()) % 7
+
+      # Set by dayid
+      if value.dayid isnt 1
+        today.setDate today.getDate() +  (value.dayid - today.getDay()) % 7
 
       convertedTimeStart = new Date(today.getFullYear(), today.getMonth(), today.getDate(), changeTime(value.starthour, 0), changeTime(value.starthour, 1), changeTime(value.starthour, 2))
       convertedTimeEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), changeTime(value.startend, 0), changeTime(value.startend, 1), changeTime(value.startend, 2))
