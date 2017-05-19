@@ -1,5 +1,5 @@
 # iGracias Schedule Generator
-Generate .ics / calendar files from your iGracias schedule in easy way!
+Generate .ical / calendar files from your iGracias schedule in easy way!
 
 ## Background
 Saya termasuk orang yang terstruktur dalam hal penjadwalan, tugas dan pekerjaan. Dalam keseharian saya, saya tidak akan jauh dengan Google Calendar, Teamweek, ataupun Trello.
@@ -11,6 +11,8 @@ Untuk instalasinya dibutuhkan [Node.JS](https://nodejs.org/en/). Silahkan instal
 
 Setelah itu ketikkan code dibawah di Terminal untuk menginstall package
   $ npm install
+
+Buka file `config.js`, ubah NIM dengan NIM Anda.
 
 Jalankan aplikasi dengan mengetikkan
   $ node main.js
