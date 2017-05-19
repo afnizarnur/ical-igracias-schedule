@@ -45,10 +45,6 @@ request {
       event.repeating({
         freq: 'WEEKLY'
       })
-
-      # event.repeating {
-      #   freq: 'WEEKLY'
-      # }
   return
 
 http.createServer((req, res) ->
