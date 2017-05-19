@@ -28,6 +28,9 @@ convertDay = (day) ->
     when "6" then "Sat"
     else "Sun"
 
+changeTime = (value, number) ->
+  value.split(':')[number]
+
 convertTime = ->
   console.log "date"
 
@@ -38,13 +41,11 @@ request {
 }, (error, response, body) ->
   if !error and response.statusCode == 200
     for value in body[0][0]
-      t1 = value.starthour.split(':')[0]
-      t2 = value.starthour.split(':')[1]
-      t3 = value.starthour.split(':')[2]
-
       today = new Date()
-      convertedTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), t1, t2, t3)
-      console.log value.lecturecode + ' ' + convertedTime
+      convertedTimeStart = new Date(today.getFullYear(), today.getMonth(), today.getDate(), changeTime(value.starthour, 0), changeTime(value.starthour, 1), changeTime(value.starthour, 2))
+      convertedTimeEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), changeTime(value.startend, 0), changeTime(value.startend, 1), changeTime(value.startend, 2))
+
+      console.log value.lecturecode + ' ' + convertedTimeStart + ' ' + convertedTimeEnd
 
       # cal.createEvent {
       #   start: new Date
