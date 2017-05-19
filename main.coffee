@@ -34,13 +34,21 @@ request {
       convertedTimeStart = new Date(today.getFullYear(), today.getMonth(), today.getDate(), changeTime(start, 0), changeTime(start, 1), changeTime(start, 2))
       convertedTimeEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), changeTime(end, 0), changeTime(end, 1), changeTime(end, 2))
 
-      cal.createEvent {
+      event = cal.createEvent {
         start: convertedTimeStart
         end: convertedTimeEnd
         summary: value.roomname + ' - ' + value.subjectname
         description: 'Kode Dosen ' + value.lecturecode
         location: value.roomname
       }
+
+      event.repeating({
+        freq: 'WEEKLY'
+      })
+
+      # event.repeating {
+      #   freq: 'WEEKLY'
+      # }
   return
 
 http.createServer((req, res) ->
