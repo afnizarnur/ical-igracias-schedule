@@ -2,26 +2,26 @@
 Generate .ical / calendar files from your iGracias schedule in easy way!
 
 ## Background
-Saya termasuk orang yang terstruktur dalam hal penjadwalan, tugas dan pekerjaan. Dalam keseharian saya, saya tidak akan jauh dengan Google Calendar, Teamweek, ataupun Trello.
+I'm very structured person in terms of scheduling, task and work. In my daily life, I'll not be far away with Google Calendar, Teamweek, and Trello.
 
-Dalam hal penjadwalan kuliah, setiap pergantian semester, saya selalu membuat event di Google Calendar untuk jadwal kuliah saya, dan hal ini sangatlah melelahkan karena saya harus melakukannya secara manual. Dengan adanya masalah itu, saya berinisiatif membuat project ini untuk menyelesaikan permasalahan tersebut. Dalam hal resource, untungnya API untuk jadwal kuliah di sistem informasi kampus yaitu iGracias, terbuka dan bisa digunakan tanpa perlu ribet untuk setupnya.
+In terms of scheduling lectures, every semester change, I always make an event in Google Calendar for my college schedule, and it's very tiring because I've to do it manually. With that problem, I took the initiative to make this project to solve the problem. In terms of resources, luckily the API for college schedule is open and can be used without complicated setup.
 
 ## Installation
-Untuk instalasinya dibutuhkan [Node.JS](https://nodejs.org/en/). Silahkan install terlebih dahulu.
+For installation you need [Node.JS](https://nodejs.org/en/). Please install it first.
 
-Setelah itu ketikan code dibawah di Terminal untuk menginstall package
+After that type the code below in your Terminal to install required package.
 ```
 $ npm install
 ```
 
-Buka file `config.js`, ubah NIM dengan NIM Anda.
+Open `config.js` file, change NIM with your NIM.
 
-Jalankan aplikasi dengan mengetikan
+Run project by type the code below in your terminal.
 ```
 $ node main.js
 ```
 
-Setelah itu buka [http://localhost:3000/](http://localhost:3000/) untuk mendownload file .ics atau file kalender.
+After that open [http://localhost:3000/](http://localhost:3000/) to download .ics file.
 
 ## TODO
 - [ ] Create URL with NIM in it to without dive to the code

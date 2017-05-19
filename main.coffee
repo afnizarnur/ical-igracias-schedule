@@ -12,8 +12,12 @@ cal = ical {
 changeTime = (value, number) ->
   value.split(':')[number]
 
-url = 'https://dashboard.telkomuniversity.ac.id/Modul/apimobile/dataAkademikMahasiswa/getDataAkademikMahasiswa.php?data=jadwal&nim=' + config.NIM
+welcome = ->
+  console.log "Generate .ical / calendar files from your iGracias schedule in easy way!"
 
+setTimeout(welcome, 3000)
+
+url = 'https://dashboard.telkomuniversity.ac.id/Modul/apimobile/dataAkademikMahasiswa/getDataAkademikMahasiswa.php?data=jadwal&nim=' + config.NIM
 request {
   url: url
   json: true
