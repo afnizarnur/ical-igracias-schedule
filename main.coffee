@@ -42,25 +42,24 @@ request {
   if !error and response.statusCode == 200
     for value in body[0][0]
       today = new Date()
+      # Set to next week
+      today.setDate today.getDate() + (value.dayid + 7 - today.getDay()) % 7
+
       convertedTimeStart = new Date(today.getFullYear(), today.getMonth(), today.getDate(), changeTime(value.starthour, 0), changeTime(value.starthour, 1), changeTime(value.starthour, 2))
       convertedTimeEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), changeTime(value.startend, 0), changeTime(value.startend, 1), changeTime(value.startend, 2))
 
-      console.log value.lecturecode + ' ' + convertedTimeStart + ' ' + convertedTimeEnd
-
-      # cal.createEvent {
-      #   start: new Date
-      #   end: new Date((new Date).getTime() + 3600000)
-      #   summary: value.roomname + ' - ' + value.subjectname
-      #   description: 'Kode Dosen ' + value.lecturecode
-      #   location: value.roomname
-      # }
+      cal.createEvent {
+        start: convertedTimeStart
+        end: convertedTimeEnd
+        summary: value.roomname + ' - ' + value.subjectname
+        description: 'Kode Dosen ' + value.lecturecode
+        location: value.roomname
+      }
   return
 
-#
-#
-# http.createServer((req, res) ->
-#   cal.serve res
-#   return
-# ).listen 3006, '127.0.0.1', ->
-#   console.log 'Server running at http://127.0.0.1:3006/'
-#   return
+http.createServer((req, res) ->
+  cal.serve res
+  return
+).listen 3006, '127.0.0.1', ->
+  console.log 'Server running at http://127.0.0.1:3006/'
+  return
