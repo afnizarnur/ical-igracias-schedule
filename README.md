@@ -4,7 +4,7 @@ Generate .ical / calendar files from your iGracias schedule in easy way!
 ## Background
 I'm very structured person in terms of scheduling, task and work. In my daily life, I'll not be far away with Google Calendar, Teamweek, and Trello.
 
-In terms of scheduling lectures, every semester change, I always make an event in Google Calendar for my college schedule, and it's very tiring because I've to do it manually. With that problem, I took the initiative to make this project to solve the problem. In terms of resources, luckily the API for college schedule is open and can be used without complicated setup.
+In terms of scheduling lectures, every semester change, I always make an event in Google Calendar for my college schedule, and it's very tiring because I've to do it manually. With that problem, I took the initiative to make this project to solve the problem. For the resources, luckily the API for college schedule is open and can be used without complicated setup.
 
 ## Installation
 For installation you need [Node.JS](https://nodejs.org/en/). Please install it first.
