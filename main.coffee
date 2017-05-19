@@ -38,7 +38,13 @@ request {
 }, (error, response, body) ->
   if !error and response.statusCode == 200
     for value in body[0][0]
-      convertDay(value.dayid) + ' ' + starthour
+      t1 = value.starthour.split(':')[0]
+      t2 = value.starthour.split(':')[1]
+      t3 = value.starthour.split(':')[2]
+
+      today = new Date()
+      convertedTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), t1, t2, t3)
+      console.log value.lecturecode + ' ' + convertedTime
 
       # cal.createEvent {
       #   start: new Date
