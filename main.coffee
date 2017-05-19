@@ -8,31 +8,8 @@ cal = ical {
   prodId: {company: 'afnizarnur.com', product: 'ical-igracias-schedule'},
 }
 
-# First, open the url
-# Loop based the data provided
-# Set summary as roomname + subjectname
-# Set description lecturecode
-# Set start as starthour
-  # dayid = 1, 2, 3, 4, 5, 6
-# Set end as startend
-# Set location roomname
-# Repeat every week
-
-convertDay = (day) ->
-  switch day
-    when "1" then "Mon"
-    when "2" then "Tue"
-    when "3" then "Wed"
-    when "4" then "Thu"
-    when "5" then "Fri"
-    when "6" then "Sat"
-    else "Sun"
-
 changeTime = (value, number) ->
   value.split(':')[number]
-
-convertTime = ->
-  console.log "date"
 
 url = 'https://dashboard.telkomuniversity.ac.id/Modul/apimobile/dataAkademikMahasiswa/getDataAkademikMahasiswa.php?data=jadwal&nim=1301152427'
 request {
@@ -43,7 +20,7 @@ request {
     for value in body[0][0]
       today = new Date()
       # Set to next week
-      today.setDate today.getDate() + (value.dayid + 7 - today.getDay()) % 7
+      today.setDate today.getDate() + (1 + 7 - today.getDay()) % 7
 
       convertedTimeStart = new Date(today.getFullYear(), today.getMonth(), today.getDate(), changeTime(value.starthour, 0), changeTime(value.starthour, 1), changeTime(value.starthour, 2))
       convertedTimeEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate(), changeTime(value.startend, 0), changeTime(value.startend, 1), changeTime(value.startend, 2))
@@ -60,6 +37,6 @@ request {
 http.createServer((req, res) ->
   cal.serve res
   return
-).listen 3006, '127.0.0.1', ->
-  console.log 'Server running at http://127.0.0.1:3006/'
+).listen 3000, '127.0.0.1', ->
+  console.log 'Server running at http://127.0.0.1:3000/'
   return
