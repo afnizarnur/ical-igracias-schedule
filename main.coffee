@@ -5,7 +5,36 @@ cal = ical {
   domain: 'afnizarnur.com'
   name: 'iGracias Schedule Generator'
   timezone: 'Asia/Jakarta'
+  prodId: {company: 'afnizarnur.com', product: 'ical-igracias-schedule'},
 }
+
+# First, open the url
+# Loop based the data provided
+# Set summary as roomname + subjectname
+# Set description lecturecode
+# Set start as starthour
+  # dayid = 1, 2, 3, 4, 5, 6
+# Set end as startend
+# Set location roomname
+# Repeat every week
+
+convertDay = (day) ->
+  switch day
+    when "1" then "Mon"
+    when "2" then "Tue"
+    when "3" then "Wed"
+    when "4" then "Thu"
+    when "5" then "Fri"
+    when "6" then "Sat"
+    else "Sun"
+
+convertTime = ->
+  console.log "date"
+
+nextWeek = (x) ->
+  now = new Date
+  now.setDate now.getDate() + (x + 7 - now.getDay()) % 7
+  now
 
 url = 'https://dashboard.telkomuniversity.ac.id/Modul/apimobile/dataAkademikMahasiswa/getDataAkademikMahasiswa.php?data=jadwal&nim=1301152427'
 request {
@@ -13,31 +42,28 @@ request {
   json: true
 }, (error, response, body) ->
   if !error and response.statusCode == 200
-    console.log body[0][0][0].courseid
+    for value in body[0][0]
+      newDate = nextWeek(value.dayid)
+      newStart = value.starthour.replace(/:/g , ",")
+      newDate.setHours(newStart)
+      console.log(newDate)
+      # Fri May 19 2017 07:13:42 GMT+0700 (WIB)
+      # convertDay(value.dayid) + ' ' + starthour
+      # console.log convertDay(value.dayid)
+      # cal.createEvent {
+      #   start: new Date
+      #   end: new Date((new Date).getTime() + 3600000)
+      #   summary: value.roomname + ' - ' + value.subjectname
+      #   description: 'Kode Dosen ' + value.lecturecode
+      #   location: value.roomname
+      # }
   return
 
-
-# First, open the url
-# Loop based the data provided
-# Set summary as roomname + subjectname
-# Set description lecturecode
-# Set start as starthour
-# Set end as startend
-# Set location roomname
-# Repeat every week
-
-# cal.createEvent {
-#   start: new Date
-#   end: new Date((new Date).getTime() + 3600000)
-#   summary: 'KU3.2.01 - Probabilitas dan Statistika'
-#   description: 'Kode Dosen - ADF'
-#   location: 'KU3.2.01'
-#   freq: 'WEEKLY'
-# }
+#
 #
 # http.createServer((req, res) ->
 #   cal.serve res
 #   return
-# ).listen 3000, '127.0.0.1', ->
-#   console.log 'Server running at http://127.0.0.1:3000/'
+# ).listen 3006, '127.0.0.1', ->
+#   console.log 'Server running at http://127.0.0.1:3006/'
 #   return
