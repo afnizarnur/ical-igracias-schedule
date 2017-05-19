@@ -31,11 +31,6 @@ convertDay = (day) ->
 convertTime = ->
   console.log "date"
 
-nextWeek = (x) ->
-  now = new Date
-  now.setDate now.getDate() + (x + 7 - now.getDay()) % 7
-  now
-
 url = 'https://dashboard.telkomuniversity.ac.id/Modul/apimobile/dataAkademikMahasiswa/getDataAkademikMahasiswa.php?data=jadwal&nim=1301152427'
 request {
   url: url
@@ -43,13 +38,8 @@ request {
 }, (error, response, body) ->
   if !error and response.statusCode == 200
     for value in body[0][0]
-      newDate = nextWeek(value.dayid)
-      newStart = value.starthour.replace(/:/g , ",")
-      newDate.setHours(newStart)
-      console.log(newDate)
-      # Fri May 19 2017 07:13:42 GMT+0700 (WIB)
-      # convertDay(value.dayid) + ' ' + starthour
-      # console.log convertDay(value.dayid)
+      convertDay(value.dayid) + ' ' + starthour
+
       # cal.createEvent {
       #   start: new Date
       #   end: new Date((new Date).getTime() + 3600000)
