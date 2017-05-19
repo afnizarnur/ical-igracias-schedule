@@ -10,12 +10,12 @@ Dalam hal penjadwalan kuliah, setiap pergantian semester, saya selalu membuat ev
 Untuk instalasinya dibutuhkan [Node.JS](https://nodejs.org/en/). Silahkan install terlebih dahulu.
 
 Setelah itu ketikan code dibawah di Terminal untuk menginstall package
-  $ npm install
+> $ npm install
 
 Buka file `config.js`, ubah NIM dengan NIM Anda.
 
 Jalankan aplikasi dengan mengetikan
-  $ node main.js
+> $ node main.js
 
 Setelah itu buka [http://localhost:3000/](http://localhost:3000/) untuk mendownload file .ics atau file kalender.
 
